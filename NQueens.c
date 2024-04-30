@@ -4,15 +4,15 @@
 
 void printSolution(int board[N][N])
 {
-    int i,j;
-    for(i = 0 ; i < N ; i++)
+    int i, j;
+    for(i = 0; i < N; i++)
     {
-        for( j = 0 ; j < N ; j++)
+        for(j = 0; j < N; j++)
         {
             if(board[i][j])
-                printf("Q");
+                printf("Q ");
             else
-                printf(".");
+                printf(". ");
         }
         printf("\n");
     }
@@ -20,17 +20,17 @@ void printSolution(int board[N][N])
 
 bool isSafe(int board[N][N], int row, int col)
 {
-    int i,j;
+    int i, j;
 
-    for( i = 0; i < col; i++)
+    for(i = 0; i < col; i++)
         if(board[row][i])
             return false;
 
-    for( i = row, j = col; i >= 0 && j >= 0 ; i++, j++)
+    for(i = row, j = col; i >= 0 && j >= 0; i--, j--)
         if(board[i][j])
             return false;
 
-    for( i = row, j = col; j >= 0 && i <= row; i++, j++)
+    for(i = row, j = col; j >= 0 && i < N; i++, j--)
         if(board[i][j])
             return false;
     return true;
@@ -39,12 +39,12 @@ bool isSafe(int board[N][N], int row, int col)
 bool NqueenUtil(int board[N][N], int col)
 {
     int i;
-   if( col > N)
+    if(col >= N)
         return true;
 
-    for( i = 0; i <= N ; i++)
+    for(i = 0; i < N; i++)
     {
-        if( isSafe(board, i, col))
+        if(isSafe(board, i, col))
         {
             board[i][col] = 1;
             if(NqueenUtil(board, col + 1)) // we are checking for rest of the rows for a queen placed in a particular column  col
@@ -62,7 +62,7 @@ bool solveNQ()
                         {0, 0, 0, 0},
                         {0, 0, 0, 0} };
 
-    if( NqueenUtil(board, 0) == false)
+    if(!NqueenUtil(board, 0))
     {
         printf("Solution does not exist");
         return false;
@@ -72,7 +72,8 @@ bool solveNQ()
     return true;
 }
 
-int main(){
+int main()
+{
     solveNQ(); // Added parentheses to call the solveNQ function
     return 0;
 }
