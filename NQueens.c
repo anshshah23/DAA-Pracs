@@ -77,3 +77,10 @@ int main()
     solveNQ(); // Added parentheses to call the solveNQ function
     return 0;
 }
+
+
+/* . . Q .
+   Q . . .
+   . . . Q
+   . Q . .
+*/
