@@ -8,7 +8,7 @@ void qs(int a[], int low, int high) {
         int i = low - 1; // Initialize the index of the smaller element
 
         // Partition the array
-        for (int j = low; j <= high - 1; j++) {
+        for (int j = low; j < high; j++) {
             if (a[j] < pivot) {
                 i++;
                 int temp = a[i];
