@@ -50,8 +50,7 @@ void PrimMST(int graph[V][V])
         for (int v = 0; v < V; v++)
 
             // graph[u][v] is non zero only for adjacent vertices of m
-            // mstSet[v] is false for vertic+
-            es not yet included in MST
+            // mstSet[v] is false for vertices not yet included in MST
             // Update the key only if graph[u][v] is smaller than key[v]
             if (graph[u][v] && mstSet[v] == false && graph[u][v] < key[v])
                 parent[v] = u, key[v] = graph[u][v];
