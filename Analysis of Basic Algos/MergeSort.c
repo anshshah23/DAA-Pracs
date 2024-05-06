@@ -12,14 +12,10 @@ void merge(int left, int mid, int right)
     int k = left; 
     while(i <= mid && j <= right)  
 	{ 
-        if(a[i] < a[j]) 
-    	{ 
-            b[k++] = a[i++]; 
-    	} 
-        else 
-    	{ 
-            b[k++] = a[j++]; 
-    	} 
+        if(a[i] < a[j])
+            b[k++] = a[i++];
+        else
+            b[k++] = a[j++];
 	} 
     while(i <= mid) 
 	{ 
@@ -48,9 +44,7 @@ void descbubblesort()
 { 
     int temp; 
     for (int i = 0; i < size - 1; i++) 
-	{ 
- 
- 
+	{
         for (int j = 0; j < size - i - 1; j++) 
     	{ 
             if (a[j] < a[j + 1]) 
@@ -73,14 +67,16 @@ int main()
 	}
 	start=clock(); 
     mergeSort(0, size - 1); 
-	end=clock(); 
+	end=clock();
     timetaken=((double)(end-start))/CLOCKS_PER_SEC; 
     printf("\n%.7f ms for average case",timetaken); 
-	start=clock(); 
+	
+    start=clock(); 
     mergeSort(0, size - 1); 
-end=clock(); 
+    end=clock(); 
     timetaken=((double)(end-start))/CLOCKS_PER_SEC; 
     printf("\n%.7f ms for best case",timetaken); 
+    
     descbubblesort(); 
 	start=clock(); 
     mergeSort(0, size - 1); 
