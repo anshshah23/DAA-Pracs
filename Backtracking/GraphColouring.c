@@ -37,7 +37,7 @@ int graphColouring() {
         int color;
         for (color = 1; color <= n_vertices; color++) { 
             // Find the lowest available color
-            if (available[color]) {
+            if (available[color] && isValid(vertex, color)) {
                 break;
             }
         }
