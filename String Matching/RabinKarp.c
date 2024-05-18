@@ -6,15 +6,13 @@
 void RK(const char T[], const char P[], int d, int q) {
     int n = strlen(T);
     int m = strlen(P);
-    //int h = d ^ (m - 1) % q;
     int h = 1;
     for (int i = 0; i < m - 1; i++) {
         h = (h * d) % q;
     }
     int p = 0, t = 0;
-    int ts = 0; // Variable to keep track of ts
 
-    for (int i = 0; i < m; i++) {
+    for (int i = 0; i <= m - 1 ; i++) {
         p = (d * p + P[i]) % q;
         t = (d * t + T[i]) % q;
     }
@@ -32,7 +30,7 @@ void RK(const char T[], const char P[], int d, int q) {
         }
         if (s < n - m) {
             t = (d * (t - T[s] * h) + T[s + m]) % q;
-            if (t < 0) // Ensure t is positive
+            if (t < 0)
                 t = t + q;
         }
     }
@@ -40,8 +38,8 @@ void RK(const char T[], const char P[], int d, int q) {
 
 int main() {
     char T[100], P[100];
-    int d = 256; // A prime number
-    int q = 101; // Another prime number
+    int d = 256;
+    int q = 101;
 
     printf("*** Rabin Karp Algorithm ***\n");
 

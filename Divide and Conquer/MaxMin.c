@@ -6,15 +6,18 @@ void MaxMin(int A[], int i, int j, int *max, int *min) {
     int max1, min1, max2, min2, mid;
     if (i == j) {
         *max = *min = A[i];
-    } else if (i == j - 1) {
+    } 
+    else if (i == j - 1) {
         if (A[i] < A[j]) {
             *min = A[i];
             *max = A[j];
-        } else {
+        } 
+        else {
             *min = A[j];
             *max = A[i];
         }
-    } else {
+    } 
+    else {
         mid = (i + j) / 2;
         MaxMin(A, i, mid, &max1, &min1);
         MaxMin(A, mid + 1, j, &max2, &min2);

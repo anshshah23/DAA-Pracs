@@ -25,7 +25,7 @@ int main(){
     for(int i=0;i<n;i++){
         pw[i]=(float) profit[i]/weight[i];
     }
-
+//descending order of profit/weight ratio
     for(int i=0;i<n-1;i++){
         for(int j=i+1;j<n;j++){
             if(pw[i]<pw[j]){
@@ -54,7 +54,6 @@ int main(){
             frac[i]=(float)max_weight/weight[i];
             gain+=max_weight*pw[i];
             break;
-
         }
     }
     printf("\n");    

@@ -4,10 +4,8 @@
 
 void qs(int a[], int low, int high) {
     if (low < high) {
-        int pivot = a[high]; // Select the pivot element as the last element of the array
-        int i = low - 1; // Initialize the index of the smaller element
-
-        // Partition the array
+        int pivot = a[high];
+        int i = low - 1;
         for (int j = low; j < high; j++) {
             if (a[j] < pivot) {
                 i++;
@@ -16,15 +14,12 @@ void qs(int a[], int low, int high) {
                 a[j] = temp;
             }
         }
-
-        // Swap the pivot element with the element at the correct position
         int temp = a[i + 1];
         a[i + 1] = a[high];
         a[high] = temp;
 
-        int pi = i + 1; // Get the index of the pivot element
+        int pi = i + 1; 
 
-        // Recursively sort the sub-arrays
         qs(a, low, pi - 1);
         qs(a, pi + 1, high);
     }
@@ -34,34 +29,27 @@ int main() {
     clock_t start, end;
     double cpu_time_used;
 
-    int arr[1000000]; // Declare an array of size 1000000
-    int n = sizeof(arr) / sizeof(arr[0]); // Calculate the size of the array
-
-    // Generate random numbers and store them in the array
+    int arr[1000000]; 
+    int n = sizeof(arr) / sizeof(arr[0]); 
     for (int i = 0; i < n; ++i) {
         arr[i] = rand() % 1000000;
     }
 
-    start = clock(); // Start the clock
+    start = clock();
 
-    // Call the quicksort function to sort the array
     qs(arr, 0, n - 1);
 
-    end = clock(); // Stop the clock
+    end = clock(); 
 
-    cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC; // Calculate the CPU time used
-
-    // Print the sorted array
+    cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
     printf("Sorted array: ");
     for (int i = 0; i < n; ++i) {
         printf("%d ", arr[i]);
     }
     printf("\n");
 
-    // Print the time taken to sort the array
     printf("Time taken: %f seconds\n", cpu_time_used);
 
-    printf("//Ansh Shah- 60004220082- C013"); // Print author information
-
+    printf("//Ansh Shah- 60004220082- C013");
     return 0;
 }

@@ -1,48 +1,41 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <limits.h>
-
+#define INF INT_MAX
 #define MAX_VERTICES 100
 #define MAX_EDGES 100
 
 int num_vertices, num_edges;
 int edges[MAX_EDGES][3];
-int distances[MAX_VERTICES];
+int distance[MAX_VERTICES];
 
 void bellmanFord(int src) {
-    // Initialize distances
     for (int i = 0; i < num_vertices; i++) {
-        distances[i] = INT_MAX;
+        distance[i] = INT_MAX;
     }
-    distances[src] = 0;
-
-    // Relax all edges V-1 times
+    distance[src] = 0;
     for (int i = 0; i < num_vertices - 1; i++) {
         for (int j = 0; j < num_edges; j++) {
             int u = edges[j][0];
             int v = edges[j][1];
-            int weight = edges[j][2];
-            if (distances[u] != INT_MAX && distances[u] + weight < distances[v]) {
-                distances[v] = distances[u] + weight;
+            int wt = edges[j][2];
+            if (distance[u] != INT_MAX && distance[u] + wt < distance[v]) {
+                distance[v] = distance[u] + wt;
             }
         }
     }
-
-    // Check for negative cycles
     for (int i = 0; i < num_edges; i++) {
         int u = edges[i][0];
         int v = edges[i][1];
-        int weight = edges[i][2];
-        if (distances[u] != INT_MAX && distances[u] + weight < distances[v]) {
+        int wt = edges[i][2];
+        if (distance[u] != INT_MAX && distance[u] + wt < distance[v]) {
             printf("Graph contains negative cycle\n");
             return;
         }
     }
-
-    // Print distances
     printf("Vertex   Distance from Source\n");
     for (int i = 0; i < num_vertices; i++) {
-        printf("%d \t\t %d\n", i, distances[i]);
+        printf("%d \t\t %d\n", i, distance[i]);
     }
 }
 

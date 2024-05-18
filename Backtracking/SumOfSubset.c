@@ -2,7 +2,6 @@
 
 #define MAX_SIZE 100
 
-int subset[MAX_SIZE];
 int solution[MAX_SIZE];
 int sum;
 int count;
